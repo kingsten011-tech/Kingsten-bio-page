@@ -52,8 +52,8 @@ const LOGOS = [
   { type: 'icon', name: 'Atlassian', slug: 'atlassian', color: '0052CC', textColor: '#0052CC' },
   { type: 'icon', name: 'Postman', slug: 'postman', color: 'FF6C37', textColor: '#FF6C37' },
   { type: 'google', name: 'Google' },
-  { type: 'wordmark', name: 'ORACLE', className: 'text-[#F80000] font-black tracking-tight text-2xl' },
-  { type: 'wordmark', name: 'ThoughtWorks', className: 'text-black font-bold tracking-tight text-xl' },
+  { type: 'image', name: 'Oracle', src: '/images/oracle.png', height: 'h-7' },
+  { type: 'image', name: 'Thoughtworks', src: '/images/thoughtworks.png', height: 'h-9', rounded: true },
   { type: 'wordmark', name: 'theTradeDesk', className: 'text-black font-bold tracking-tight text-xl' },
 ];
 
@@ -62,6 +62,18 @@ const LogoItem = ({ logo }) => {
     return (
       <div className="flex items-center h-10 px-5 flex-shrink-0">
         <span className={logo.className}>{logo.name}</span>
+      </div>
+    );
+  }
+  if (logo.type === 'image') {
+    return (
+      <div className="flex items-center h-10 px-5 flex-shrink-0">
+        <img
+          src={logo.src}
+          alt={logo.name}
+          className={`${logo.height} w-auto object-contain ${logo.rounded ? 'rounded-md' : ''}`}
+          loading="lazy"
+        />
       </div>
     );
   }
