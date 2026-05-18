@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, MapPin } from 'lucide-react';
+import CompanyLogo from './CompanyLogo';
 
 const experiences = [
   {
@@ -128,6 +129,7 @@ const ExperienceCard = ({ exp, isOpen, onToggle }) => {
         >
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2 flex-wrap">
+              <CompanyLogo id={exp.id} size="md" />
               <h3 className="font-display font-black text-xl lg:text-2xl text-black">{exp.company}</h3>
               {exp.badge && (
                 <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-[#CFEA6B] font-mono text-[10px] font-bold tracking-wider text-black">

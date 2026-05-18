@@ -27,7 +27,10 @@ const TerminalWindow = () => (
           <span className="text-[#CFEA6B]">"yoe"</span>: <span className="text-orange-300">8</span>,
         </div>
         <div className="pl-4">
-          <span className="text-[#CFEA6B]">"focus"</span>: [<span className="text-amber-200">"AI/ML"</span>, <span className="text-amber-200">"Platform"</span>,
+          <span className="text-[#CFEA6B]">"focus"</span>: [<span className="text-amber-200">"AI/ML"</span>, <span className="text-amber-200">"Infra"</span>,
+        </div>
+        <div className="pl-8">
+          <span className="text-amber-200">"Product Hiring"</span>, <span className="text-amber-200">"Eng Structure"</span>,
         </div>
         <div className="pl-8">
           <span className="text-amber-200">"Leadership"</span>],
@@ -54,7 +57,7 @@ const LOGOS = [
   { type: 'google', name: 'Google' },
   { type: 'image', name: 'Oracle', src: '/images/oracle.png', height: 'h-12' },
   { type: 'image', name: 'Thoughtworks', src: '/images/thoughtworks.png', height: 'h-10' },
-  { type: 'wordmark', name: 'theTradeDesk', className: 'text-black font-bold tracking-tight text-xl' },
+  { type: 'image', name: 'The Trade Desk', src: '/images/tradedesk.png', height: 'h-9' },
 ];
 
 const LogoItem = ({ logo }) => {
@@ -164,15 +167,15 @@ const Hero = () => {
 
             <h1 className="font-display font-black text-[#0a0a0a] leading-[0.95] tracking-tight mb-7">
               <span className="block text-4xl md:text-5xl lg:text-[60px] whitespace-nowrap">Kingsten Jones.</span>
-              <span className="block text-3xl md:text-4xl lg:text-[52px] text-black/30 font-black mt-3">
-                I hire the people who build
+              <span className="block text-2xl md:text-3xl lg:text-[42px] text-black/30 font-black mt-3 leading-[1.08]">
+                I hire the teams building
               </span>
-              <span className="block text-3xl md:text-4xl lg:text-[52px] font-black mt-1 relative w-fit">
-                <span className="relative z-10">the products</span>
+              <span className="block text-2xl md:text-3xl lg:text-[42px] font-black mt-1 leading-[1.08] relative w-fit">
+                <span className="relative z-10">AI, infrastructure, and</span>
               </span>
-              <span className="block text-3xl md:text-4xl lg:text-[52px] font-black relative w-fit mt-1">
-                <span className="relative z-10">you use.</span>
-                <span className="absolute left-0 right-0 bottom-1.5 lg:bottom-2 h-2 lg:h-2.5 bg-[#CFEA6B] -z-0 -rotate-1"></span>
+              <span className="block text-2xl md:text-3xl lg:text-[42px] font-black relative w-fit mt-1 leading-[1.08]">
+                <span className="relative z-10">large-scale software systems.</span>
+                <span className="absolute left-0 right-0 bottom-1 lg:bottom-1.5 h-2 lg:h-2.5 bg-[#CFEA6B] -z-0 -rotate-1"></span>
               </span>
             </h1>
 
@@ -216,11 +219,10 @@ const Hero = () => {
 
           <div className="space-y-5">
             <TerminalWindow />
-            <div className="grid grid-cols-4 gap-2.5">
+            <div className="grid grid-cols-3 gap-2.5">
               <StatBox value="8+" label="Years" />
-              <StatBox value="200+" label="Hires" />
+              <StatBox value="250+" label="Hires" />
               <StatBox value="5" label="Markets" />
-              <StatBox value="7" label="Companies" />
             </div>
           </div>
         </div>

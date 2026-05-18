@@ -26,7 +26,7 @@ const About = () => {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <div className="font-mono text-xs text-black/40 mb-5">// About</div>
         <h2 className="font-display font-black text-3xl md:text-4xl lg:text-[48px] leading-[1.05] tracking-tight text-black mb-12 lg:mb-16 max-w-3xl">
-          Talent strategy that reads like product strategy.
+          Designing talent strategy that helps teams build faster and smarter.
         </h2>
 
         <div className="grid lg:grid-cols-[0.6fr_1fr] gap-10 lg:gap-14 items-start">
@@ -79,6 +79,10 @@ const About = () => {
                 <StrengthPill>Stakeholder Partnership</StrengthPill>
                 <StrengthPill>Talent Strategy</StrengthPill>
                 <StrengthPill>Market Intelligence</StrengthPill>
+                <StrengthPill>Interviewer Calibration</StrengthPill>
+                <StrengthPill>Interviewer Analysis</StrengthPill>
+                <StrengthPill>Training &amp; Mentoring</StrengthPill>
+                <StrengthPill>Data Driven Hiring</StrengthPill>
               </div>
             </div>
           </div>

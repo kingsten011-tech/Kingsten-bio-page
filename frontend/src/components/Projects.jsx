@@ -1,4 +1,5 @@
 import React from 'react';
+import CompanyLogo from './CompanyLogo';
 
 const FeatureProject = () => (
   <div
@@ -10,7 +11,7 @@ const FeatureProject = () => (
         <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-[#FFD56B] text-black font-mono text-[10px] font-bold tracking-wider">
           IN PROGRESS
         </span>
-        <span className="font-mono text-[11px] text-white/40">@ Atlassian</span>
+        <CompanyLogo id="atlassian" size="sm" />
       </div>
       <h3 className="font-display font-black text-3xl lg:text-[40px] mb-4 tracking-tight leading-tight">
         Recruiter Canvas
@@ -48,7 +49,7 @@ const ProjectCard = ({ project }) => (
       <span className={`inline-flex items-center px-2.5 py-1 rounded-full font-mono text-[10px] font-bold tracking-wider ${project.statusColor}`}>
         {project.status}
       </span>
-      <span className="font-mono text-[11px] text-black/40">@ {project.company}</span>
+      <CompanyLogo id={project.companyId} size="sm" />
     </div>
     <h3 className="font-display font-black text-xl lg:text-2xl leading-tight tracking-tight text-black mb-3">
       {project.title}
@@ -78,6 +79,7 @@ const projects = [
     status: 'SHIPPED',
     statusColor: 'bg-[#D4F1B5] text-[#3b6308]',
     company: 'Postman',
+    companyId: 'postman',
     title: 'Postbot AI — Founding Team',
     description: 'Built the founding engineering team for Postbot AI alongside co-founder Abhijit Kane. The product is now projected to drive $2M+ ARR.',
     bullets: ['$2M+ ARR projection', 'First AI Applied Engineer', 'GA-ready org'],
@@ -88,6 +90,7 @@ const projects = [
     status: 'GA 2025',
     statusColor: 'bg-[#E0DAFB] text-[#4a3da7]',
     company: 'Postman',
+    companyId: 'postman',
     title: 'Performance Testing — Founding Team',
     description: "Recruited the founding engineering org for Postman's Performance Testing product, slated for general availability in 2025.",
     bullets: ['GA-ready team', 'Cross-functional hires'],
@@ -98,6 +101,7 @@ const projects = [
     status: 'ADOPTED',
     statusColor: 'bg-[#CFE9F5] text-[#1f5778]',
     company: 'The Trade Desk',
+    companyId: 'thetradedesk',
     title: 'APAC Hiring Playbook',
     description: 'Designed APAC hiring strategy — interviewer calibration, candidate prep docs, unified hiring process, onboarding flow — used across Singapore, Australia & India.',
     bullets: ['~70% source→offer PTR', 'DEI-first pipeline', 'Cross-region adoption'],
@@ -108,6 +112,7 @@ const projects = [
     status: 'CONTRIBUTOR',
     statusColor: 'bg-[#F8D2E2] text-[#9b2c5e]',
     company: 'Google',
+    companyId: 'google',
     title: 'Talent Insights',
     description: 'Contributed to a cross-team initiative analyzing decline patterns — decoding the why and where of candidate drop-offs to improve funnel quality.',
     bullets: ['Decline RCA', 'Funnel quality', 'Leadership reporting'],
