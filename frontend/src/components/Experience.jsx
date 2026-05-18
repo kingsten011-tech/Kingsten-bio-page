@@ -124,31 +124,31 @@ const ExperienceCard = ({ exp, isOpen, onToggle }) => {
         <button
           onClick={onToggle}
           data-testid={`experience-toggle-${exp.id}`}
-          className="w-full text-left p-6 lg:p-8 flex items-start justify-between gap-4"
+          className="w-full text-left p-5 lg:p-7 flex items-start justify-between gap-4"
         >
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2 flex-wrap">
-              <h3 className="font-display font-black text-2xl lg:text-3xl text-black">{exp.company}</h3>
+              <h3 className="font-display font-black text-xl lg:text-2xl text-black">{exp.company}</h3>
               {exp.badge && (
                 <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-[#CFEA6B] font-mono text-[10px] font-bold tracking-wider text-black">
                   {exp.badge}
                 </span>
               )}
             </div>
-            <div className="text-base lg:text-lg text-black/80 mb-1">{exp.role}</div>
-            <div className="font-mono text-xs text-black/40 flex flex-wrap items-center gap-3">
+            <div className="text-sm lg:text-base text-black/80 mb-1">{exp.role}</div>
+            <div className="font-mono text-[11px] text-black/40 flex flex-wrap items-center gap-3">
               <span>{exp.period}</span>
               <span className="flex items-center gap-1">
-                <MapPin size={11} />
+                <MapPin size={10} />
                 {exp.location}
               </span>
             </div>
             {!isOpen && (
-              <p className="text-sm text-black/60 mt-3 leading-relaxed">{exp.summary}</p>
+              <p className="text-[13px] text-black/60 mt-3 leading-relaxed">{exp.summary}</p>
             )}
           </div>
           <ChevronDown
-            size={20}
+            size={18}
             className={`text-black/30 flex-shrink-0 mt-2 transition-transform ${
               isOpen ? 'rotate-180' : ''
             }`}
@@ -156,26 +156,26 @@ const ExperienceCard = ({ exp, isOpen, onToggle }) => {
         </button>
 
         {isOpen && (
-          <div className="px-6 lg:px-8 pb-8">
-            <p className="text-base text-black/70 mb-6 leading-relaxed">{exp.summary}</p>
+          <div className="px-5 lg:px-7 pb-7">
+            <p className="text-sm lg:text-base text-black/70 mb-5 leading-relaxed">{exp.summary}</p>
             <div
-              className="border-t border-dashed border-black/15 pt-6 space-y-3"
+              className="border-t border-dashed border-black/15 pt-5 space-y-2.5"
               data-testid={`experience-points-${exp.id}`}
             >
               {exp.points.map((point, i) => (
                 <div key={i} className="flex gap-4">
-                  <span className="font-mono text-sm text-[#7DAF15] font-bold w-6 flex-shrink-0">
+                  <span className="font-mono text-xs text-[#7DAF15] font-bold w-5 flex-shrink-0">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <p className="text-sm lg:text-base text-black/80 leading-relaxed flex-1">{point}</p>
+                  <p className="text-[13px] lg:text-sm text-black/80 leading-relaxed flex-1">{point}</p>
                 </div>
               ))}
             </div>
-            <div className="flex flex-wrap gap-2 mt-6">
+            <div className="flex flex-wrap gap-2 mt-5">
               {exp.tags.map((tag, i) => (
                 <span
                   key={i}
-                  className="inline-flex items-center px-3 py-1.5 rounded-md bg-[#0E0E0C] font-mono text-[11px] text-[#CFEA6B]"
+                  className="inline-flex items-center px-3 py-1.5 rounded-md bg-[#0E0E0C] font-mono text-[10px] text-[#CFEA6B]"
                 >
                   {tag}
                 </span>
@@ -195,16 +195,16 @@ const Experience = () => {
     <section
       id="experience"
       data-testid="experience-section"
-      className="bg-[#F1EDE3] py-24 lg:py-32"
+      className="bg-[#F1EDE3] py-20 lg:py-28"
     >
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-        <div className="font-mono text-sm text-black/40 mb-6">// Experience</div>
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-14 lg:mb-20">
-          <h2 className="font-display font-black text-4xl md:text-5xl lg:text-[64px] leading-[1.02] tracking-tight text-black max-w-3xl">
+        <div className="font-mono text-xs text-black/40 mb-5">// Experience</div>
+        <div className="flex items-end justify-between flex-wrap gap-6 mb-12 lg:mb-16">
+          <h2 className="font-display font-black text-3xl md:text-4xl lg:text-[48px] leading-[1.05] tracking-tight text-black max-w-3xl">
             Where <span className="italic">I've</span>{' '}
             <span className="text-black/30">built teams.</span>
           </h2>
-          <p className="font-mono text-xs text-black/40 max-w-xs">
+          <p className="font-mono text-[11px] text-black/40 max-w-xs">
             click any role to expand the impact.
           </p>
         </div>

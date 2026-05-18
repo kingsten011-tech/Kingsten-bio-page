@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Mail, Phone, Linkedin, ArrowUpRight, Send } from 'lucide-react';
+import { Mail, Phone, Linkedin, ArrowUpRight, Send, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
+
+const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 const ContactLink = ({ icon: Icon, label, href, testId }) => (
   <a
@@ -18,13 +20,32 @@ const ContactLink = ({ icon: Icon, label, href, testId }) => (
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast.success("Message sent!", {
-      description: "Thanks for reaching out — I'll reply via email shortly.",
-    });
-    setFormData({ name: '', email: '', company: '', message: '' });
+    setSubmitting(true);
+    try {
+      const response = await fetch(`${API_URL}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.detail || 'Failed to send message');
+      }
+      toast.success("Message sent!", {
+        description: "Thanks for reaching out — I'll reply via email shortly.",
+      });
+      setFormData({ name: '', email: '', company: '', message: '' });
+    } catch (err) {
+      toast.error("Could not send", {
+        description: err.message || "Please try emailing kingstenjones2@gmail.com directly.",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -33,20 +54,20 @@ const Contact = () => {
     <section
       id="contact"
       data-testid="contact-section"
-      className="bg-[#0a0a09] text-white py-24 lg:py-32"
+      className="bg-[#0a0a09] text-white py-20 lg:py-28"
     >
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16">
           {/* Left */}
           <div>
-            <div className="font-mono text-sm text-[#CFEA6B] mb-6">// let's talk</div>
-            <h2 className="font-display font-black text-4xl md:text-5xl lg:text-[64px] leading-[1.02] tracking-tight mb-2">
+            <div className="font-mono text-xs text-[#CFEA6B] mb-5">// let's talk</div>
+            <h2 className="font-display font-black text-3xl md:text-4xl lg:text-[48px] leading-[1.05] tracking-tight mb-2">
               Hiring an engineering team?
             </h2>
-            <p className="font-display font-black text-3xl md:text-4xl lg:text-[52px] leading-[1.02] tracking-tight text-white/30 mb-10">
+            <p className="font-display font-black text-2xl md:text-3xl lg:text-[40px] leading-[1.05] tracking-tight text-white/30 mb-8">
               Or just curious about the market?
             </p>
-            <p className="text-base lg:text-lg text-white/60 leading-relaxed max-w-lg mb-12">
+            <p className="text-sm lg:text-base text-white/60 leading-relaxed max-w-lg mb-10">
               I'm happy to chat about engineering hiring, founding-team building, market intel for
               AI/ML or platform roles, or anything talent-strategy.
             </p>
@@ -138,11 +159,21 @@ const Contact = () => {
                 </span>
                 <button
                   type="submit"
+                  disabled={submitting}
                   data-testid="form-submit"
-                  className="inline-flex items-center gap-2 bg-[#CFEA6B] hover:bg-[#bcd957] text-black pl-5 pr-4 py-3 rounded-full font-mono text-sm font-medium transition-all group"
+                  className="inline-flex items-center gap-2 bg-[#CFEA6B] hover:bg-[#bcd957] disabled:opacity-60 disabled:cursor-not-allowed text-black pl-5 pr-4 py-3 rounded-full font-mono text-sm font-medium transition-all group"
                 >
-                  send message
-                  <Send size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                  {submitting ? (
+                    <>
+                      sending...
+                      <Loader2 size={14} className="animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                      send message
+                      <Send size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                    </>
+                  )}
                 </button>
               </div>
             </form>
