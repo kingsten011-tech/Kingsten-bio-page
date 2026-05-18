@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
-import { Mail, Phone, Linkedin, ArrowUpRight, Send, Loader2 } from 'lucide-react';
-import { toast } from 'sonner';
-
-const API_URL = process.env.REACT_APP_BACKEND_URL;
+import React from 'react';
+import { Mail, Phone, Linkedin, ArrowUpRight, Download, FileText } from 'lucide-react';
 
 const ContactLink = ({ icon: Icon, label, href, testId }) => (
   <a
@@ -19,37 +16,6 @@ const ContactLink = ({ icon: Icon, label, href, testId }) => (
 );
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
-  const [submitting, setSubmitting] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSubmitting(true);
-    try {
-      const response = await fetch(`${API_URL}/api/contact`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.detail || 'Failed to send message');
-      }
-      toast.success("Message sent!", {
-        description: "Thanks for reaching out — I'll reply via email shortly.",
-      });
-      setFormData({ name: '', email: '', company: '', message: '' });
-    } catch (err) {
-      toast.error("Could not send", {
-        description: err.message || "Please try emailing kingstenjones2@gmail.com directly.",
-      });
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-
   return (
     <section
       id="contact"
@@ -57,7 +23,7 @@ const Contact = () => {
       className="bg-[#0a0a09] text-white py-20 lg:py-28"
     >
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16">
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-12 lg:gap-16 items-start">
           {/* Left */}
           <div>
             <div className="font-mono text-xs text-[#CFEA6B] mb-5">// let's talk</div>
@@ -94,89 +60,66 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Right form */}
-          <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-7 lg:p-10">
-            <form onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label className="block font-mono text-[11px] tracking-widest text-white/40 mb-2 uppercase">Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Jane Doe"
-                    data-testid="form-name"
-                    className="w-full bg-transparent border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#CFEA6B] transition-colors"
-                  />
+          {/* Right: Resume download card */}
+          <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-7 lg:p-9 relative overflow-hidden">
+            {/* subtle grid bg */}
+            <div
+              className="absolute inset-0 opacity-[0.08] pointer-events-none"
+              style={{
+                backgroundImage: `radial-gradient(circle, #CFEA6B 1px, transparent 1px)`,
+                backgroundSize: '18px 18px',
+              }}
+            />
+
+            <div className="relative">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-11 h-11 rounded-xl bg-[#CFEA6B] flex items-center justify-center">
+                  <FileText size={20} className="text-black" strokeWidth={2.5} />
                 </div>
                 <div>
-                  <label className="block font-mono text-[11px] tracking-widest text-white/40 mb-2 uppercase">Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="jane@company.com"
-                    data-testid="form-email"
-                    className="w-full bg-transparent border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#CFEA6B] transition-colors"
-                  />
+                  <div className="font-mono text-[11px] tracking-widest text-[#CFEA6B] uppercase">// resume</div>
+                  <div className="font-mono text-[11px] text-white/50">PDF · v2025</div>
                 </div>
               </div>
 
-              <div>
-                <label className="block font-mono text-[11px] tracking-widest text-white/40 mb-2 uppercase">Company (optional)</label>
-                <input
-                  type="text"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleChange}
-                  placeholder="Acme Corp"
-                  data-testid="form-company"
-                  className="w-full bg-transparent border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#CFEA6B] transition-colors"
-                />
+              <h3 className="font-display font-black text-2xl md:text-3xl lg:text-[36px] leading-[1.05] tracking-tight mb-3">
+                Prefer the long form?
+              </h3>
+              <p className="text-sm text-white/60 leading-relaxed mb-6 max-w-md">
+                Grab the full PDF — every role, every project, every metric. Recruiter-friendly,
+                ATS-friendly, and ready to forward to a hiring partner.
+              </p>
+
+              {/* file preview */}
+              <div className="bg-black/40 border border-white/10 rounded-2xl p-4 mb-6 flex items-center gap-4">
+                <div className="w-12 h-14 bg-[#CFEA6B] rounded-md flex flex-col items-center justify-center flex-shrink-0">
+                  <span className="font-mono text-[9px] font-bold text-black">PDF</span>
+                  <span className="font-mono text-[8px] text-black/60 mt-0.5">2025</span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="font-mono text-[13px] text-white truncate">
+                    Kingsten-Jones-Resume.pdf
+                  </div>
+                  <div className="font-mono text-[11px] text-white/40 mt-0.5">
+                    8+ years · 7 companies · ~305 KB
+                  </div>
+                </div>
               </div>
 
-              <div>
-                <label className="block font-mono text-[11px] tracking-widest text-white/40 mb-2 uppercase">Message</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  placeholder="What kind of team are you building?"
-                  data-testid="form-message"
-                  className="w-full bg-transparent border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#CFEA6B] transition-colors resize-none"
-                />
-              </div>
+              <a
+                href="/resume.pdf"
+                download="Kingsten-Jones-Resume.pdf"
+                data-testid="contact-download-resume"
+                className="w-full inline-flex items-center justify-center gap-2.5 bg-[#CFEA6B] hover:bg-[#bcd957] text-black px-5 py-3.5 rounded-full font-mono text-sm font-medium transition-all group"
+              >
+                <Download size={15} className="group-hover:translate-y-0.5 transition-transform" />
+                download resume.pdf
+              </a>
 
-              <div className="flex items-center justify-between flex-wrap gap-4 pt-2">
-                <span className="font-mono text-[11px] text-white/40">
-                  // Stored securely · I'll reply via email
-                </span>
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  data-testid="form-submit"
-                  className="inline-flex items-center gap-2 bg-[#CFEA6B] hover:bg-[#bcd957] disabled:opacity-60 disabled:cursor-not-allowed text-black pl-5 pr-4 py-3 rounded-full font-mono text-sm font-medium transition-all group"
-                >
-                  {submitting ? (
-                    <>
-                      sending...
-                      <Loader2 size={14} className="animate-spin" />
-                    </>
-                  ) : (
-                    <>
-                      send message
-                      <Send size={14} className="group-hover:translate-x-0.5 transition-transform" />
-                    </>
-                  )}
-                </button>
+              <div className="mt-5 font-mono text-[11px] text-white/40 text-center">
+                // or reach out via any channel on the left
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>

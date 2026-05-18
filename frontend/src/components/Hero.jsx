@@ -52,8 +52,8 @@ const LOGOS = [
   { type: 'icon', name: 'Atlassian', slug: 'atlassian', color: '0052CC', textColor: '#0052CC' },
   { type: 'icon', name: 'Postman', slug: 'postman', color: 'FF6C37', textColor: '#FF6C37' },
   { type: 'google', name: 'Google' },
-  { type: 'image', name: 'Oracle', src: '/images/oracle.png', height: 'h-7' },
-  { type: 'image', name: 'Thoughtworks', src: '/images/thoughtworks.png', height: 'h-9', rounded: true },
+  { type: 'image', name: 'Oracle', src: '/images/oracle.png', height: 'h-12' },
+  { type: 'image', name: 'Thoughtworks', src: '/images/thoughtworks.png', height: 'h-10' },
   { type: 'wordmark', name: 'theTradeDesk', className: 'text-black font-bold tracking-tight text-xl' },
 ];
 
