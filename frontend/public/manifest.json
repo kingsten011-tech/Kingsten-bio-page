@@ -1,0 +1,16 @@
+{
+  "short_name": "Kingsten Jones",
+  "name": "Kingsten Jones | Bio | Recruiter",
+  "description": "Senior Tech Recruiter with 8+ years hiring teams that build AI, infrastructure, and large-scale software systems.",
+  "icons": [
+    {
+      "src": "/images/profile.jpg",
+      "type": "image/jpeg",
+      "sizes": "192x192 512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#F1EDE3",
+  "background_color": "#F1EDE3"
+}
