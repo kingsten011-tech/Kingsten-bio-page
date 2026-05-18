@@ -1,77 +1,54 @@
 import React from 'react';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Mail, Linkedin, ArrowUpRight } from 'lucide-react';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#1a1a1a] text-white py-12">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+    <footer
+      data-testid="site-footer"
+      className="bg-[#0a0a09] text-white border-t border-white/5 py-10"
+    >
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           {/* Brand */}
-          <div>
-            <div className="font-mono text-sm text-[#8fb339] mb-3">
-              <span className="opacity-60">//</span> kingsten.dev
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full overflow-hidden ring-2 ring-[#CFEA6B] ring-offset-2 ring-offset-[#0a0a09]">
+              <img src="/images/profile.jpg" alt="Kingsten" className="w-full h-full object-cover" />
             </div>
-            <p className="text-sm text-white/70 leading-relaxed">
-              Building high-performing engineering teams across global markets.
-            </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-mono text-sm text-[#8fb339] mb-3">// navigate</h3>
-            <div className="space-y-2">
-              <a href="#about" className="block text-sm text-white/70 hover:text-[#8fb339] transition-colors">
-                About
-              </a>
-              <a href="#experience" className="block text-sm text-white/70 hover:text-[#8fb339] transition-colors">
-                Experience
-              </a>
-              <a href="#projects" className="block text-sm text-white/70 hover:text-[#8fb339] transition-colors">
-                Projects
-              </a>
-              <a href="#skills" className="block text-sm text-white/70 hover:text-[#8fb339] transition-colors">
-                Skills
-              </a>
-              <a href="#contact" className="block text-sm text-white/70 hover:text-[#8fb339] transition-colors">
-                Contact
-              </a>
+            <div className="font-mono text-sm">
+              <span className="text-white">kingsten-jones</span>
+              <span className="text-white/40">.bio</span>
             </div>
           </div>
 
-          {/* Connect */}
-          <div>
-            <h3 className="font-mono text-sm text-[#8fb339] mb-3">// connect</h3>
-            <div className="flex gap-4">
-              <a
-                href="https://in.linkedin.com/in/kingsten-jones-646242125"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-white/10 rounded hover:bg-[#8fb339] transition-colors"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="mailto:kingstenjones2@gmail.com"
-                className="p-2 bg-white/10 rounded hover:bg-[#8fb339] transition-colors"
-              >
-                <Mail size={20} />
-              </a>
-            </div>
+          {/* Right pills */}
+          <div className="flex items-center gap-3">
+            <a
+              href="mailto:kingstenjones2@gmail.com"
+              data-testid="footer-email"
+              className="inline-flex items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 px-4 py-2.5 rounded-full font-mono text-xs text-white/80 transition-colors"
+            >
+              <Mail size={13} />
+              email
+            </a>
+            <a
+              href="https://in.linkedin.com/in/kingsten-jones-646242125"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="footer-linkedin"
+              className="inline-flex items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 px-4 py-2.5 rounded-full font-mono text-xs text-white/80 transition-colors group"
+            >
+              <Linkedin size={13} />
+              linkedin
+              <ArrowUpRight size={12} className="group-hover:rotate-12 transition-transform" />
+            </a>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="pt-8 border-t border-white/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-white/60 font-mono">
-              © {currentYear} Kingsten Jones. All rights reserved.
-            </p>
-            <p className="text-xs text-white/40 font-mono">
-              Built with React • Designed for impact
-            </p>
-          </div>
+        <div className="mt-8 pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4">
+          <p className="font-mono text-[11px] text-white/30">// Crafted with care · {year}</p>
+          <p className="font-mono text-[11px] text-white/30">© Kingsten Jones</p>
         </div>
       </div>
     </footer>

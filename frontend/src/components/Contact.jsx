@@ -1,153 +1,150 @@
 import React, { useState } from 'react';
-import { Mail, Phone, Linkedin, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, Linkedin, ArrowUpRight, Send } from 'lucide-react';
 import { toast } from 'sonner';
 
+const ContactLink = ({ icon: Icon, label, href, testId }) => (
+  <a
+    href={href}
+    target={href.startsWith('http') ? '_blank' : undefined}
+    rel="noopener noreferrer"
+    data-testid={testId}
+    className="flex items-center gap-3 bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 rounded-2xl px-5 py-4 transition-all group"
+  >
+    <Icon size={18} className="text-[#CFEA6B] flex-shrink-0" />
+    <span className="font-mono text-sm text-white/85 flex-1">{label}</span>
+    <ArrowUpRight size={16} className="text-white/30 group-hover:text-white group-hover:rotate-12 transition-all" />
+  </a>
+);
+
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // This is a frontend-only implementation
-    toast.success('Message Sent!', {
-      description: 'Thank you for reaching out. I\'ll get back to you soon.',
+    toast.success("Message sent!", {
+      description: "Thanks for reaching out — I'll reply via email shortly.",
     });
-    setFormData({ name: '', email: '', message: '' });
+    setFormData({ name: '', email: '', company: '', message: '' });
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
-    <section id="contact" className="py-24 bg-[#fdfcf9]">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="font-mono text-xs text-[#8fb339] mb-8">
-          <span className="opacity-60">/* ————— section: contact ————— */</span>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Info */}
+    <section
+      id="contact"
+      data-testid="contact-section"
+      className="bg-[#0a0a09] text-white py-24 lg:py-32"
+    >
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16">
+          {/* Left */}
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
-              Let's Connect
+            <div className="font-mono text-sm text-[#CFEA6B] mb-6">// let's talk</div>
+            <h2 className="font-display font-black text-4xl md:text-5xl lg:text-[64px] leading-[1.02] tracking-tight mb-2">
+              Hiring an engineering team?
             </h2>
-            <p className="text-lg text-[#1a1a1a]/70 mb-8 leading-relaxed">
-              Open to discussing talent strategy, executive sourcing, or collaboration opportunities.
+            <p className="font-display font-black text-3xl md:text-4xl lg:text-[52px] leading-[1.02] tracking-tight text-white/30 mb-10">
+              Or just curious about the market?
+            </p>
+            <p className="text-base lg:text-lg text-white/60 leading-relaxed max-w-lg mb-12">
+              I'm happy to chat about engineering hiring, founding-team building, market intel for
+              AI/ML or platform roles, or anything talent-strategy.
             </p>
 
-            <div className="space-y-4">
-              <a
+            <div className="space-y-3 max-w-md">
+              <ContactLink
+                icon={Mail}
+                label="kingstenjones2@gmail.com"
                 href="mailto:kingstenjones2@gmail.com"
-                className="flex items-center gap-3 text-[#1a1a1a] hover:text-[#8fb339] transition-colors group"
-              >
-                <div className="p-3 bg-white border border-[#e5e3db] rounded group-hover:border-[#8fb339] transition-colors">
-                  <Mail size={20} />
-                </div>
-                <div>
-                  <div className="font-mono text-xs text-[#8fb339] mb-1">// email</div>
-                  <div className="font-medium">kingstenjones2@gmail.com</div>
-                </div>
-              </a>
-
-              <a
+                testId="contact-email"
+              />
+              <ContactLink
+                icon={Phone}
+                label="+91 9600816138"
                 href="tel:+919600816138"
-                className="flex items-center gap-3 text-[#1a1a1a] hover:text-[#8fb339] transition-colors group"
-              >
-                <div className="p-3 bg-white border border-[#e5e3db] rounded group-hover:border-[#8fb339] transition-colors">
-                  <Phone size={20} />
-                </div>
-                <div>
-                  <div className="font-mono text-xs text-[#8fb339] mb-1">// phone</div>
-                  <div className="font-medium">+91 9600816138</div>
-                </div>
-              </a>
-
-              <a
+                testId="contact-phone"
+              />
+              <ContactLink
+                icon={Linkedin}
+                label="linkedin.com/in/kingsten-jones"
                 href="https://in.linkedin.com/in/kingsten-jones-646242125"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-[#1a1a1a] hover:text-[#8fb339] transition-colors group"
-              >
-                <div className="p-3 bg-white border border-[#e5e3db] rounded group-hover:border-[#8fb339] transition-colors">
-                  <Linkedin size={20} />
-                </div>
-                <div>
-                  <div className="font-mono text-xs text-[#8fb339] mb-1">// linkedin</div>
-                  <div className="font-medium">Kingsten Jones</div>
-                </div>
-              </a>
-
-              <div className="flex items-center gap-3 text-[#1a1a1a]">
-                <div className="p-3 bg-white border border-[#e5e3db] rounded">
-                  <MapPin size={20} />
-                </div>
-                <div>
-                  <div className="font-mono text-xs text-[#8fb339] mb-1">// location</div>
-                  <div className="font-medium">Bangalore, India</div>
-                </div>
-              </div>
+                testId="contact-linkedin"
+              />
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="bg-white border border-[#e5e3db] rounded-lg p-8">
-            <div className="font-mono text-xs text-[#8fb339] mb-6">
-              <span className="opacity-60">// send a message</span>
-            </div>
-            <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Right form */}
+          <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-7 lg:p-10">
+            <form onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="block font-mono text-[11px] tracking-widest text-white/40 mb-2 uppercase">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="Jane Doe"
+                    data-testid="form-name"
+                    className="w-full bg-transparent border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#CFEA6B] transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block font-mono text-[11px] tracking-widest text-white/40 mb-2 uppercase">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="jane@company.com"
+                    data-testid="form-email"
+                    className="w-full bg-transparent border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#CFEA6B] transition-colors"
+                  />
+                </div>
+              </div>
+
               <div>
-                <label className="block font-mono text-xs text-[#1a1a1a]/60 mb-2">
-                  name<span className="text-[#8fb339]">*</span>
-                </label>
+                <label className="block font-mono text-[11px] tracking-widest text-white/40 mb-2 uppercase">Company (optional)</label>
                 <input
                   type="text"
-                  name="name"
-                  value={formData.name}
+                  name="company"
+                  value={formData.company}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-[#fdfcf9] border border-[#e5e3db] rounded focus:outline-none focus:border-[#8fb339] transition-colors"
-                  placeholder="Your name"
+                  placeholder="Acme Corp"
+                  data-testid="form-company"
+                  className="w-full bg-transparent border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#CFEA6B] transition-colors"
                 />
               </div>
+
               <div>
-                <label className="block font-mono text-xs text-[#1a1a1a]/60 mb-2">
-                  email<span className="text-[#8fb339]">*</span>
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-[#fdfcf9] border border-[#e5e3db] rounded focus:outline-none focus:border-[#8fb339] transition-colors"
-                  placeholder="your@email.com"
-                />
-              </div>
-              <div>
-                <label className="block font-mono text-xs text-[#1a1a1a]/60 mb-2">
-                  message<span className="text-[#8fb339]">*</span>
-                </label>
+                <label className="block font-mono text-[11px] tracking-widest text-white/40 mb-2 uppercase">Message</label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={5}
-                  className="w-full px-4 py-3 bg-[#fdfcf9] border border-[#e5e3db] rounded focus:outline-none focus:border-[#8fb339] transition-colors resize-none"
-                  placeholder="Tell me about your project or opportunity..."
+                  rows={6}
+                  placeholder="What kind of team are you building?"
+                  data-testid="form-message"
+                  className="w-full bg-transparent border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#CFEA6B] transition-colors resize-none"
                 />
               </div>
-              <button
-                type="submit"
-                className="w-full font-mono text-sm px-6 py-3 bg-[#8fb339] text-white hover:bg-[#7a9e2f] transition-all duration-300 rounded flex items-center justify-center gap-2 group"
-              >
-                Send Message
-                <Send size={16} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+
+              <div className="flex items-center justify-between flex-wrap gap-4 pt-2">
+                <span className="font-mono text-[11px] text-white/40">
+                  // Stored securely · I'll reply via email
+                </span>
+                <button
+                  type="submit"
+                  data-testid="form-submit"
+                  className="inline-flex items-center gap-2 bg-[#CFEA6B] hover:bg-[#bcd957] text-black pl-5 pr-4 py-3 rounded-full font-mono text-sm font-medium transition-all group"
+                >
+                  send message
+                  <Send size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                </button>
+              </div>
             </form>
           </div>
         </div>
