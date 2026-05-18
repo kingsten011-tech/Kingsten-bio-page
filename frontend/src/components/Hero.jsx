@@ -55,9 +55,9 @@ const LOGOS = [
   { type: 'icon', name: 'Atlassian', slug: 'atlassian', color: '0052CC', textColor: '#0052CC' },
   { type: 'icon', name: 'Postman', slug: 'postman', color: 'FF6C37', textColor: '#FF6C37' },
   { type: 'google', name: 'Google' },
-  { type: 'image', name: 'Oracle', src: '/images/oracle.png', height: 'h-12' },
-  { type: 'image', name: 'Thoughtworks', src: '/images/thoughtworks.png', height: 'h-10' },
-  { type: 'image', name: 'The Trade Desk', src: '/images/tradedesk.png', height: 'h-9' },
+  { type: 'image', name: 'Oracle', src: '/images/oracle.png', height: 'h-10' },
+  { type: 'image', name: 'Thoughtworks', src: '/images/thoughtworks.png', height: 'h-9' },
+  { type: 'image', name: 'The Trade Desk', src: '/images/tradedesk.png', height: 'h-11' },
 ];
 
 const LogoItem = ({ logo }) => {
