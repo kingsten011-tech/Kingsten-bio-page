@@ -1,8 +1,10 @@
 import React from 'react';
 import { Sparkles, MapPin } from 'lucide-react';
+import CardGlowBorder from './motion/CardGlowBorder';
 
 const Achievement = ({ children }) => (
-  <div className="premium-card ambient-surface spark-interactive bg-white border border-black/5 rounded-2xl p-4 flex items-start gap-3">
+  <div className="premium-card ambient-surface spark-interactive relative bg-white border border-black/5 rounded-2xl p-4 flex items-start gap-3 overflow-hidden">
+    <CardGlowBorder />
     <div className="w-6 h-6 rounded-md bg-[#E8F5C0] flex items-center justify-center flex-shrink-0 mt-0.5">
       <Sparkles size={12} className="text-[#7DAF15]" />
     </div>
@@ -21,11 +23,11 @@ const About = () => {
     <section
       id="about"
       data-testid="about-section"
-      className="relative bg-[#F1EDE3] py-20 lg:py-28 overflow-hidden"
+      className="site-section relative bg-[#F1EDE3] overflow-hidden"
     >
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-        <div className="font-mono text-xs text-black/40 mb-5">// About</div>
-        <h2 className="font-display font-black text-3xl md:text-4xl lg:text-[48px] leading-[1.05] tracking-tight text-black mb-12 lg:mb-16 max-w-3xl">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-10">
+        <div className="font-mono text-xs text-black/40 mb-4">// About</div>
+        <h2 className="font-display font-black text-[2rem] sm:text-3xl md:text-4xl lg:text-[42px] leading-[1.05] tracking-tight text-black mb-8 lg:mb-10 max-w-3xl">
           Designing talent strategy that helps teams build faster and smarter.
         </h2>
 
@@ -34,6 +36,7 @@ const About = () => {
           <div className="relative max-w-sm">
             <div className="absolute -inset-2.5 bg-[#CFEA6B]/40 rounded-3xl blur-sm" />
             <div className="premium-card ambient-surface spark-interactive relative bg-white rounded-3xl overflow-hidden shadow-xl shadow-black/5">
+              <CardGlowBorder />
               <img
                 src="/images/profile.jpg"
                 alt="Kingsten Jones"

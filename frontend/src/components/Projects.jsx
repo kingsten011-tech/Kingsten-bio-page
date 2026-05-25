@@ -1,27 +1,32 @@
 import React from 'react';
 import CompanyLogo from './CompanyLogo';
+import CardGlowBorder from './motion/CardGlowBorder';
+import FocusCard from './motion/FocusCard';
+import { brandGlowStyle } from '../lib/brandTokens';
 
 const FeatureProject = () => (
   <div
     data-testid="featured-project"
-    className="premium-card-dark ambient-surface-dark spark-interactive bg-[#0E0E0C] text-white rounded-2xl p-7 lg:p-10 mb-5 relative overflow-hidden"
+    className="premium-card-dark ambient-surface-dark spark-interactive bg-[#0E0E0C] text-white rounded-2xl site-card-pad lg:px-8 mb-4 relative overflow-hidden"
+    style={brandGlowStyle('atlassian')}
   >
-    <div className="max-w-3xl">
-      <div className="flex items-center gap-3 mb-5 flex-wrap">
+    <CardGlowBorder dark brand />
+    <div className="relative z-[1] max-w-3xl">
+      <div className="flex items-center gap-3 mb-4 flex-wrap">
         <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-[#FFD56B] text-black font-mono text-[10px] font-bold tracking-wider">
           IN PROGRESS
         </span>
         <CompanyLogo id="atlassian" size="sm" />
       </div>
-      <h3 className="font-display font-black text-3xl lg:text-[40px] mb-4 tracking-tight leading-tight">
+      <h3 className="font-display font-black text-2xl lg:text-[34px] mb-3 tracking-tight leading-tight">
         Recruiter Canvas
       </h3>
-      <p className="text-sm lg:text-base text-white/70 leading-relaxed mb-6 max-w-2xl">
+      <p className="text-sm text-white/70 leading-relaxed mb-4 max-w-2xl">
         Building a unified recruiting application integrating ATS, scheduling, and reporting systems —
         reducing manual effort, improving recruiter efficiency, and accelerating hiring through better
         pipeline visibility and analytics. A more complex evolution of existing recruiter cockpits.
       </p>
-      <div className="flex flex-wrap gap-2 mb-4">
+      <div className="flex flex-wrap gap-2 mb-3">
         {['Pipeline visibility', 'Faster hiring', 'Recruiter productivity'].map((p, i) => (
           <span
             key={i}
@@ -31,7 +36,7 @@ const FeatureProject = () => (
           </span>
         ))}
       </div>
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap gap-3">
         {['#ats-integration', '#scheduling', '#analytics'].map((tag, i) => (
           <span key={i} className="font-mono text-[11px] text-white/40">{tag}</span>
         ))}
@@ -43,32 +48,36 @@ const FeatureProject = () => (
 const ProjectCard = ({ project }) => (
   <div
     data-testid={`project-${project.id}`}
-    className="premium-card ambient-surface spark-interactive bg-white rounded-2xl p-5 lg:p-7 border border-black/5 hover:border-black/15 h-full flex flex-col"
+    className="premium-card ambient-surface spark-interactive bg-white rounded-2xl site-card-pad border border-black/5 hover:border-black/15 flex flex-col relative overflow-hidden touch-manipulation"
+    style={brandGlowStyle(project.companyId)}
   >
-    <div className="flex items-center gap-3 mb-4">
-      <span className={`inline-flex items-center px-2.5 py-1 rounded-full font-mono text-[10px] font-bold tracking-wider ${project.statusColor}`}>
-        {project.status}
-      </span>
-      <CompanyLogo id={project.companyId} size="sm" />
-    </div>
-    <h3 className="font-display font-black text-xl lg:text-2xl leading-tight tracking-tight text-black mb-3">
-      {project.title}
-    </h3>
-    <p className="text-[13px] text-black/70 leading-relaxed mb-5 flex-1">{project.description}</p>
-    <div className="flex flex-wrap gap-2 mb-3">
-      {project.bullets.map((b, i) => (
-        <span
-          key={i}
-          className="inline-flex items-center px-3 py-1.5 rounded-md bg-black/[0.04] border border-black/5 font-mono text-[10px] text-black/70"
-        >
-          → {b}
+    <CardGlowBorder brand />
+    <div className="relative z-[1] flex flex-col">
+      <div className="flex items-center gap-3 mb-3">
+        <span className={`inline-flex items-center px-2.5 py-1 rounded-full font-mono text-[10px] font-bold tracking-wider ${project.statusColor}`}>
+          {project.status}
         </span>
-      ))}
-    </div>
-    <div className="flex flex-wrap gap-3">
-      {project.tags.map((t, i) => (
-        <span key={i} className="font-mono text-[10px] text-black/35">{t}</span>
-      ))}
+        <CompanyLogo id={project.companyId} size="sm" />
+      </div>
+      <h3 className="font-display font-black text-lg lg:text-xl leading-tight tracking-tight text-black mb-2">
+        {project.title}
+      </h3>
+      <p className="text-[13px] text-black/70 leading-snug mb-4">{project.description}</p>
+      <div className="flex flex-wrap gap-2 mb-3">
+        {project.bullets.map((b, i) => (
+          <span
+            key={i}
+            className="inline-flex items-center px-3 py-1.5 rounded-md bg-black/[0.04] border border-black/5 font-mono text-[10px] text-black/70"
+          >
+            → {b}
+          </span>
+        ))}
+      </div>
+      <div className="flex flex-wrap gap-3">
+        {project.tags.map((t, i) => (
+          <span key={i} className="font-mono text-[10px] text-black/35">{t}</span>
+        ))}
+      </div>
     </div>
   </div>
 );
@@ -125,12 +134,12 @@ const Projects = () => {
     <section
       id="projects"
       data-testid="projects-section"
-      className="bg-[#F7F4EA] py-20 lg:py-28"
+      className="site-section bg-[#F7F4EA]"
     >
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-        <div className="font-mono text-xs text-black/40 mb-5">// Notable Projects</div>
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-10 lg:mb-14">
-          <h2 className="font-display font-black text-3xl md:text-4xl lg:text-[48px] leading-[1.05] tracking-tight text-black max-w-2xl">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-10">
+        <div className="font-mono text-xs text-black/40 mb-4">// Notable Projects</div>
+        <div className="site-section-header flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 sm:gap-5">
+          <h2 className="font-display font-black text-[2rem] sm:text-3xl md:text-4xl lg:text-[42px] leading-[1.05] tracking-tight text-black max-w-2xl">
             Built, not just billed.
           </h2>
           <p className="font-mono text-[11px] text-black/40 max-w-sm leading-relaxed">
@@ -138,11 +147,15 @@ const Projects = () => {
           </p>
         </div>
 
-        <FeatureProject />
+        <FocusCard index={0}>
+          <FeatureProject />
+        </FocusCard>
 
-        <div className="grid md:grid-cols-2 gap-4">
-          {projects.map((p) => (
-            <ProjectCard key={p.id} project={p} />
+        <div className="grid md:grid-cols-2 gap-3 lg:gap-4 items-start">
+          {projects.map((p, index) => (
+            <FocusCard key={p.id} index={index + 1}>
+              <ProjectCard project={p} />
+            </FocusCard>
           ))}
         </div>
       </div>

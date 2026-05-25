@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Linkedin, ArrowUpRight, Calendar } from 'lucide-react';
+import CardGlowBorder from './motion/CardGlowBorder';
 
 const EXPERIENCE_OPTIONS = ['0 - 3', '3 - 6', '6 - 9', '9 - 12', '12+'];
 const ROLE_TYPES = ['Engineering', 'Recruiting'];
@@ -97,14 +98,14 @@ const Contact = () => {
     <section
       id="contact"
       data-testid="contact-section"
-      className="bg-[#0a0a09] text-white py-20 lg:py-28"
+      className="site-section bg-[#0a0a09] text-white"
     >
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-10">
         <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16 items-start">
           {/* Left */}
           <div>
             <div className="font-mono text-xs text-[#CFEA6B] mb-5">// Let&apos;s Talk</div>
-            <h2 className="font-display font-black text-3xl md:text-4xl lg:text-[48px] leading-[1.05] tracking-tight mb-2">
+            <h2 className="font-display font-black text-[2rem] sm:text-3xl md:text-4xl lg:text-[48px] leading-[1.05] tracking-tight mb-2">
               Hiring an engineering team?
             </h2>
             <p className="font-display font-black text-2xl md:text-3xl lg:text-[40px] leading-[1.05] tracking-tight text-white/30 mb-8">
@@ -133,8 +134,9 @@ const Contact = () => {
 
           {/* Right: Contact form */}
           <div className="premium-card-dark ambient-surface-dark spark-interactive bg-white/[0.02] border border-white/10 rounded-3xl p-7 lg:p-9 relative overflow-hidden">
+            <CardGlowBorder dark />
             <div
-              className="absolute inset-0 opacity-[0.06] pointer-events-none"
+              className="absolute inset-0 opacity-[0.06] pointer-events-none z-[1]"
               style={{
                 backgroundImage: 'radial-gradient(circle, #CFEA6B 1px, transparent 1px)',
                 backgroundSize: '18px 18px',

@@ -1,0 +1,76 @@
+export const caseStudies = [
+  {
+    id: 'atlassian-search',
+    brandId: 'atlassian',
+    company: 'Atlassian',
+    title: 'Search Infrastructure Hiring',
+    category: 'Search / Infrastructure / AI Hiring',
+    highlights: [
+      'Led market mapping for niche search and distributed systems engineers',
+      'Identified high-signal backend and relevance engineering talent',
+      'Managed outreach, scheduling, and hiring coordination',
+      'Partnered with compensation teams and leadership to provide market intelligence and compensation benchmarking',
+      'Helped shape hiring strategy around real market signals',
+    ],
+    tags: ['Search Systems', 'Distributed Infrastructure', 'Relevance Engineering', 'AI/ML Hiring'],
+    insight: {
+      title: 'Strategic Focus',
+      body: 'Market-led hiring for search, relevance, and distributed infrastructure talent with compensation and leadership alignment.',
+    },
+  },
+  {
+    id: 'postman-postbot',
+    brandId: 'postman',
+    company: 'Postman',
+    title: 'Building the Postbot Team',
+    category: 'AI Developer Tooling',
+    highlights: [
+      'Worked closely with founders and leadership to structure the role, interview process, and ideal engineering profile',
+      'Helped define the hiring strategy for AI-assisted developer tooling engineers',
+      'Shared compensation insights and market growth intelligence with leadership',
+      'Focused on engineers with strong product and systems thinking',
+    ],
+    tags: ['AI Tooling', 'Developer Experience', 'Founding Hiring', 'Product Engineers'],
+    insight: {
+      title: 'Strategic Focus',
+      body: 'Founding-team design for AI-assisted developer tooling — role architecture, process, and product-minded engineering bar.',
+    },
+  },
+  {
+    id: 'postman-performance',
+    brandId: 'postman',
+    company: 'Postman',
+    title: 'Performance Testing Team',
+    category: 'Developer Infrastructure',
+    highlights: [
+      'Built hiring strategy for performance testing and developer infrastructure engineering',
+      'Studied competing products and market landscape to identify relevant engineering backgrounds',
+      'Prioritized candidates who had already worked on similar developer tooling or testing products',
+      'Focused on practical product experience over generic backend hiring',
+    ],
+    tags: ['Developer Infra', 'Performance Testing', 'Tooling Engineers', 'Systems Thinking'],
+    insight: {
+      title: 'Strategic Focus',
+      body: 'Competitive landscape research to hire engineers with proven developer infrastructure and performance product experience.',
+    },
+  },
+  {
+    id: 'ttd-india',
+    brandId: 'thetradedesk',
+    company: 'The Trade Desk',
+    title: 'Building the India Engineering Hub',
+    category: 'Engineering Expansion',
+    highlights: [
+      'Supported early-stage India engineering hiring and growth',
+      'Helped position the company story and opportunity to attract strong engineering talent',
+      'Worked on employer branding and candidate storytelling',
+      'Supported hiring from interns to experienced engineers',
+      'Helped improve onboarding and early hiring momentum',
+    ],
+    tags: ['India Expansion', 'Employer Branding', 'Engineering Growth', 'Scaling Teams'],
+    insight: {
+      title: 'Strategic Focus',
+      body: 'Greenfield India hub growth through employer branding, candidate narrative, and scalable early-team hiring.',
+    },
+  },
+];

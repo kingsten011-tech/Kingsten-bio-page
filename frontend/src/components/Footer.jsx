@@ -9,7 +9,7 @@ const Footer = () => {
       data-testid="site-footer"
       className="bg-[#0a0a09] text-white border-t border-white/5 py-10"
     >
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-10">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           {/* Brand */}
           <div className="flex items-center gap-3">

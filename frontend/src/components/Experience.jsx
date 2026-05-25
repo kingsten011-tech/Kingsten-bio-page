@@ -1,18 +1,11 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { MapPin } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
-import CompanyLogo from './CompanyLogo';
+import PremiumShowcase from './motion/PremiumShowcase';
+import CompanyIdentityBlock from './showcase/CompanyIdentityBlock';
+import ShowcasePanelShell from './motion/ShowcasePanelShell';
+import ShowcaseInsightAside from './showcase/ShowcaseInsightAside';
+import { ShowcaseSectionBlock } from './showcase/ShowcaseSectionGrid';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
-
-const BRAND = {
-  atlassian: { color: '#0052CC', glow: 'rgba(0, 82, 204, 0.1)' },
-  postman: { color: '#FF6C37', glow: 'rgba(255, 108, 55, 0.1)' },
-  thetradedesk: { color: '#0099DA', glow: 'rgba(0, 153, 218, 0.09)' },
-  google: { color: '#4285F4', glow: 'rgba(66, 133, 244, 0.09)' },
-  thoughtworks: { color: '#8311FA', glow: 'rgba(131, 17, 250, 0.08)' },
-  oracle: { color: '#C74634', glow: 'rgba(199, 70, 52, 0.09)' },
-  careernet: { color: '#5a7e10', glow: 'rgba(90, 126, 16, 0.09)' },
-};
 
 const experiences = [
   {
@@ -276,186 +269,68 @@ const experiences = [
   },
 ];
 
-const transition = (reduced) => ({
-  duration: reduced ? 0.15 : 0.34,
-  ease: [0.22, 1, 0.36, 1],
-});
+const ExperiencePanel = ({ exp }) => (
+  <ShowcasePanelShell brandId={exp.id} testId={`experience-card-${exp.id}`}>
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-5 lg:gap-6 items-start">
+      <div>
+        <CompanyIdentityBlock brandId={exp.id} company={exp.company} badge={exp.badge} />
 
-const panelVariants = (reduced) => ({
-  initial: {
-    opacity: 0,
-    y: reduced ? 0 : 12,
-    filter: reduced ? 'blur(0px)' : 'blur(6px)',
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-    filter: 'blur(0px)',
-  },
-  exit: {
-    opacity: 0,
-    y: reduced ? 0 : -8,
-    filter: reduced ? 'blur(0px)' : 'blur(4px)',
-  },
-});
+        <p className="font-display font-bold text-base sm:text-lg text-black/85 leading-snug mb-3">
+          {exp.role}
+        </p>
 
-const SectionBlock = ({ title, items }) => (
-  <div className="rounded-2xl bg-[#F1EDE3]/70 border border-black/[0.04] p-4 lg:p-5 h-full">
-    <h4 className="font-mono text-[10px] uppercase tracking-widest text-black/40 mb-3">{title}</h4>
-    <ul className="space-y-2">
-      {items.map((item, i) => (
-        <li key={i} className="text-[13px] text-black/75 leading-relaxed flex gap-2">
-          <span className="text-[#7DAF15] font-mono text-[10px] mt-1 flex-shrink-0">·</span>
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
-
-const CompanySelector = ({ activeId, onSelect }) => (
-  <div
-    className="flex gap-2.5 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-thin"
-    data-testid="experience-company-selector"
-    role="tablist"
-    aria-label="Select company"
-  >
-    {experiences.map((exp) => {
-      const brand = BRAND[exp.id];
-      const isActive = activeId === exp.id;
-      return (
-        <button
-          key={exp.id}
-          type="button"
-          role="tab"
-          aria-selected={isActive}
-          data-testid={`experience-selector-${exp.id}`}
-          onClick={() => onSelect(exp.id)}
-          className={`premium-card ambient-surface spark-interactive flex-shrink-0 flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border transition-all duration-300 ${
-            isActive
-              ? 'bg-white shadow-md shadow-black/[0.06] border-black/10'
-              : 'bg-white/60 border-black/5 hover:bg-white hover:border-black/10'
-          }`}
-          style={
-            isActive
-              ? {
-                  boxShadow: `0 8px 24px -10px rgba(10,10,9,0.08), 0 0 0 1px ${brand.color}22, 0 0 20px -6px ${brand.glow}`,
-                  borderColor: `${brand.color}33`,
-                }
-              : undefined
-          }
-        >
-          <CompanyLogo id={exp.id} size="sm" />
-          <span className="font-mono text-[11px] text-black/70 whitespace-nowrap pr-0.5">
-            {exp.company}
+        <div className="font-mono text-[11px] text-black/40 flex flex-wrap items-center gap-3 mb-4">
+          <span>{exp.period}</span>
+          <span className="flex items-center gap-1">
+            <MapPin size={10} />
+            {exp.location}
           </span>
-        </button>
-      );
-    })}
-  </div>
-);
+        </div>
 
-const ExperiencePanel = ({ exp, ...motionProps }) => {
-  const brand = BRAND[exp.id];
+        <p className="text-sm text-black/70 leading-relaxed mb-5 max-w-2xl">
+          {exp.summary}
+        </p>
 
-  return (
-    <motion.article
-      {...motionProps}
-      data-testid={`experience-card-${exp.id}`}
-      className="premium-card ambient-surface spark-interactive relative rounded-3xl border border-black/5 overflow-hidden shadow-lg shadow-black/[0.04]"
-      style={{
-        background: `linear-gradient(148deg, ${brand.glow} 0%, rgba(255,255,255,0.92) 38%, #ffffff 72%)`,
-      }}
-    >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-40"
-        style={{
-          background: `radial-gradient(ellipse 80% 60% at 12% 0%, ${brand.glow} 0%, transparent 55%)`,
-        }}
-      />
-
-      <div className="relative p-6 lg:p-9">
-        <div className="grid lg:grid-cols-[1fr_240px] gap-8 lg:gap-10">
-          <div>
-            <div className="flex flex-wrap items-center gap-3 mb-3">
-              <CompanyLogo id={exp.id} size="lg" />
-              <div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <h3 className="font-display font-black text-2xl lg:text-[28px] text-black leading-tight">
-                    {exp.company}
-                  </h3>
-                  {exp.badge && (
-                    <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-[#CFEA6B] font-mono text-[10px] font-bold tracking-wider text-black">
-                      {exp.badge}
-                    </span>
-                  )}
-                </div>
-                <p className="text-sm lg:text-base text-black/80 mt-1">{exp.role}</p>
-              </div>
-            </div>
-
-            <div className="font-mono text-[11px] text-black/40 flex flex-wrap items-center gap-3 mb-5">
-              <span>{exp.period}</span>
-              <span className="flex items-center gap-1">
-                <MapPin size={10} />
-                {exp.location}
-              </span>
-            </div>
-
-            <p className="text-sm lg:text-base text-black/70 leading-relaxed mb-8 max-w-2xl">
-              {exp.summary}
-            </p>
-
-            <div
-              className="grid sm:grid-cols-2 gap-3 lg:gap-4"
-              data-testid={`experience-points-${exp.id}`}
-            >
-              {exp.sections.map((section) => (
-                <SectionBlock key={section.title} title={section.title} items={section.items} />
-              ))}
-            </div>
-          </div>
-
-          <aside className="flex flex-col gap-4">
-            <div className="rounded-2xl bg-white/70 backdrop-blur-sm border border-black/5 p-5 lg:p-6 h-full flex flex-col">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-black/40 mb-3">
-                {exp.insight.title}
-              </div>
-              <p className="text-[13px] text-black/70 leading-relaxed flex-1">{exp.insight.body}</p>
-              <div className="flex flex-wrap gap-2 mt-5 pt-5 border-t border-dashed border-black/10">
-                {exp.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="inline-flex items-center px-3 py-1.5 rounded-md bg-[#0E0E0C] font-mono text-[10px] text-[#CFEA6B]"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </aside>
+        <div
+          className="grid sm:grid-cols-2 gap-2.5 lg:gap-3"
+          data-testid={`experience-points-${exp.id}`}
+        >
+          {exp.sections.map((section) => (
+            <ShowcaseSectionBlock key={section.title} title={section.title} items={section.items} />
+          ))}
         </div>
       </div>
-    </motion.article>
-  );
-};
+
+      <ShowcaseInsightAside insight={exp.insight} tags={exp.tags} tagVariant="lime" />
+    </div>
+  </ShowcasePanelShell>
+);
 
 const Experience = () => {
   const [activeId, setActiveId] = useState('atlassian');
   const reducedMotion = usePrefersReducedMotion();
   const activeExp = experiences.find((e) => e.id === activeId) ?? experiences[0];
 
+  const selectorItems = useMemo(
+    () =>
+      experiences.map((exp) => ({
+        id: exp.id,
+        brandId: exp.id,
+        ariaLabel: exp.company,
+      })),
+    []
+  );
+
   return (
     <section
       id="experience"
       data-testid="experience-section"
-      className="bg-[#F1EDE3] py-20 lg:py-28"
+      className="site-section bg-[#F1EDE3]"
     >
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-        <div className="font-mono text-xs text-black/40 mb-5">// Experience</div>
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-10 lg:mb-12">
-          <h2 className="font-display font-black text-3xl md:text-4xl lg:text-[48px] leading-[1.05] tracking-tight text-black max-w-3xl">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-10">
+        <div className="font-mono text-xs text-black/40 mb-4">// Experience</div>
+        <div className="site-section-header flex items-end justify-between flex-wrap gap-4 sm:gap-5">
+          <h2 className="font-display font-black text-[2rem] sm:text-3xl md:text-4xl lg:text-[42px] leading-[1.05] tracking-tight text-black max-w-3xl">
             Where <span className="italic">I've</span>{' '}
             <span className="text-black/30">built teams.</span>
           </h2>
@@ -464,21 +339,18 @@ const Experience = () => {
           </p>
         </div>
 
-        <div className="space-y-5 lg:space-y-6">
-          <AnimatePresence mode="wait" initial={false}>
-            <ExperiencePanel
-              key={activeExp.id}
-              exp={activeExp}
-              variants={panelVariants(reducedMotion)}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              transition={transition(reducedMotion)}
-            />
-          </AnimatePresence>
-
-          <CompanySelector activeId={activeId} onSelect={setActiveId} />
-        </div>
+        <PremiumShowcase
+          activeId={activeId}
+          onSelect={setActiveId}
+          activeBrandId={activeExp.id}
+          selectorItems={selectorItems}
+          reducedMotion={reducedMotion}
+          selectorTestIdPrefix="experience-selector"
+          selectorAriaLabel="Select company"
+          panelTestId="experience-showcase-panel"
+        >
+          <ExperiencePanel exp={activeExp} />
+        </PremiumShowcase>
       </div>
     </section>
   );

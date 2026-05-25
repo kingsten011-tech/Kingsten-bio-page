@@ -1,5 +1,6 @@
 import React from 'react';
 import { GraduationCap, Award } from 'lucide-react';
+import CardGlowBorder from './motion/CardGlowBorder';
 
 const education = [
   {
@@ -26,9 +27,9 @@ const Certifications = () => {
     <section
       id="certifications"
       data-testid="certifications-section"
-      className="bg-[#F7F4EA] py-20 lg:py-28"
+      className="site-section bg-[#F7F4EA]"
     >
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-10">
         <div className="grid md:grid-cols-2 gap-10 lg:gap-14">
           {/* Education */}
           <div>
@@ -41,12 +42,13 @@ const Certifications = () => {
                 <div
                   key={i}
                   data-testid={`education-${i}`}
-                  className="premium-card ambient-surface spark-interactive bg-white border border-black/5 rounded-2xl p-5 flex items-start gap-3.5"
+                  className="premium-card ambient-surface spark-interactive relative overflow-hidden bg-white border border-black/5 rounded-2xl p-5 flex items-start gap-3.5"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-[#0E0E0C] flex items-center justify-center flex-shrink-0">
+                  <CardGlowBorder />
+                  <div className="w-10 h-10 rounded-xl bg-[#0E0E0C] flex items-center justify-center flex-shrink-0 relative z-[1]">
                     <GraduationCap size={18} className="text-[#CFEA6B]" />
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 relative z-[1]">
                     <h3 className="font-display font-bold text-base text-black leading-tight mb-1">
                       {edu.institution}
                     </h3>
@@ -72,18 +74,19 @@ const Certifications = () => {
                 <div
                   key={i}
                   data-testid={`certification-${i}`}
-                  className="premium-card ambient-surface spark-interactive bg-white border border-black/5 rounded-2xl p-5 flex items-center gap-3.5"
+                  className="premium-card ambient-surface spark-interactive relative overflow-hidden bg-white border border-black/5 rounded-2xl p-5 flex items-center gap-3.5"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-[#E8F5C0] flex items-center justify-center flex-shrink-0">
+                  <CardGlowBorder />
+                  <div className="w-10 h-10 rounded-xl bg-[#E8F5C0] flex items-center justify-center flex-shrink-0 relative z-[1]">
                     <Award size={18} className="text-[#7DAF15]" />
                   </div>
-                  <div className="flex-1 min-w-0">
+                  <div className="flex-1 min-w-0 relative z-[1]">
                     <h3 className="font-display font-bold text-sm text-black leading-tight">
                       {cert.title}
                     </h3>
                     <div className="font-mono text-[11px] text-black/50 mt-1">{cert.provider}</div>
                   </div>
-                  <div className="inline-flex items-center px-2.5 py-1.5 rounded-md bg-[#F8D2E2]/40 border border-[#F8D2E2] font-mono text-[10px] text-[#9b2c5e]">
+                  <div className="relative z-[1] inline-flex items-center px-2.5 py-1.5 rounded-md bg-[#F8D2E2]/40 border border-[#F8D2E2] font-mono text-[10px] text-[#9b2c5e]">
                     ID: {cert.id}
                   </div>
                 </div>

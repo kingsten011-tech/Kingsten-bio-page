@@ -1,9 +1,11 @@
 import React from 'react';
 import { ArrowDown, MapPin, Calendar } from 'lucide-react';
 import HeroGlassLight from './motion/HeroGlassLight';
+import CardGlowBorder from './motion/CardGlowBorder';
 
 const TerminalWindow = () => (
-  <div data-testid="hero-terminal" className="premium-card-dark ambient-surface-dark spark-interactive bg-[#0E0E0C] rounded-xl overflow-hidden shadow-2xl shadow-black/20 w-full max-w-md mx-auto">
+  <div data-testid="hero-terminal" className="premium-card-dark ambient-surface-dark spark-interactive relative bg-[#0E0E0C] rounded-xl overflow-hidden shadow-2xl shadow-black/20 w-full max-w-md mx-auto">
+    <CardGlowBorder dark />
     <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5">
       <div className="flex gap-1.5">
         <div className="w-3 h-3 rounded-full bg-[#FF5F57]"></div>
@@ -46,7 +48,8 @@ const TerminalWindow = () => (
 );
 
 const StatBox = ({ value, label }) => (
-  <div className="premium-card ambient-surface spark-interactive bg-white/60 border border-black/5 rounded-xl px-4 py-3.5 backdrop-blur-sm">
+  <div className="premium-card ambient-surface spark-interactive relative overflow-hidden bg-white/60 border border-black/5 rounded-xl px-4 py-3.5 backdrop-blur-sm">
+    <CardGlowBorder />
     <div className="font-display text-xl md:text-2xl font-black text-black leading-none mb-1.5">{value}</div>
     <div className="font-mono text-[9px] tracking-widest text-black/50 uppercase">{label}</div>
   </div>
@@ -142,7 +145,7 @@ const Hero = () => {
     <section
       id="hero"
       data-testid="hero-section"
-      className="relative bg-[#F1EDE3] pt-28 pb-20 lg:pt-32 lg:pb-24 overflow-hidden"
+      className="relative bg-[#F1EDE3] pt-24 sm:pt-28 pb-12 sm:pb-16 lg:pt-28 lg:pb-20 overflow-hidden"
     >
       <HeroGlassLight />
       <div
@@ -153,7 +156,7 @@ const Hero = () => {
         }}
       />
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-10 relative z-10">
         {/* Status pill */}
         <div className="hero-reveal inline-flex items-center gap-2 bg-white/70 border border-black/5 rounded-full px-3.5 py-1.5 mb-10 backdrop-blur-sm">
           <span className="relative flex h-2 w-2">
