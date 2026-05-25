@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown, Mail, MapPin, Calendar } from 'lucide-react';
+import { ArrowDown, MapPin, Calendar } from 'lucide-react';
 
 const TerminalWindow = () => (
   <div data-testid="hero-terminal" className="bg-[#0E0E0C] rounded-xl overflow-hidden shadow-2xl shadow-black/20 w-full max-w-md mx-auto">
@@ -200,14 +200,6 @@ const Hero = () => {
               >
                 <Calendar size={13} />
                 Schedule a Call
-              </a>
-              <a
-                href="mailto:kingstenjones2@gmail.com"
-                data-testid="hero-email-link"
-                className="inline-flex items-center gap-2 bg-white/70 border border-black/10 pl-4 pr-4 py-3 rounded-full font-mono text-[13px] hover:bg-white transition-all"
-              >
-                <Mail size={13} className="text-black/60" />
-                kingstenjones2@gmail.com
               </a>
             </div>
             <div className="inline-flex items-center gap-2 font-mono text-[12px] text-black/60">
