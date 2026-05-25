@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown, Mail, MapPin, Download } from 'lucide-react';
+import { ArrowDown, Mail, MapPin, Calendar } from 'lucide-react';
 
 const TerminalWindow = () => (
   <div data-testid="hero-terminal" className="bg-[#0E0E0C] rounded-xl overflow-hidden shadow-2xl shadow-black/20 w-full max-w-md mx-auto">
@@ -158,7 +158,7 @@ const Hero = () => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#7DAF15] opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#7DAF15]"></span>
           </span>
-          <span className="font-mono text-[11px] text-black/70">open to talk talent strategy</span>
+          <span className="font-mono text-[11px] text-black/70">Open to Talk Talent Strategy</span>
         </div>
 
         <div className="grid lg:grid-cols-[1.3fr_1fr] gap-12 lg:gap-16 items-start">
@@ -190,17 +190,16 @@ const Hero = () => {
                 data-testid="see-journey-btn"
                 className="inline-flex items-center gap-2.5 bg-black text-white pl-5 pr-4 py-3 rounded-full font-mono text-[13px] hover:bg-black/85 transition-all group"
               >
-                see the journey
+                See the Journey
                 <ArrowDown size={13} className="group-hover:translate-y-0.5 transition-transform" />
               </button>
               <a
-                href="/resume.pdf"
-                download="Kingsten-Jones-Resume.pdf"
-                data-testid="download-resume-btn"
+                href="#contact"
+                data-testid="schedule-call-btn"
                 className="inline-flex items-center gap-2 bg-[#CFEA6B] hover:bg-[#bcd957] text-black pl-5 pr-4 py-3 rounded-full font-mono text-[13px] transition-all group"
               >
-                <Download size={13} />
-                resume.pdf
+                <Calendar size={13} />
+                Schedule a Call
               </a>
               <a
                 href="mailto:kingstenjones2@gmail.com"

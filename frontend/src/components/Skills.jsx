@@ -52,7 +52,7 @@ const Skills = () => {
       className="bg-[#F1EDE3] py-20 lg:py-28"
     >
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-        <div className="font-mono text-xs text-black/40 mb-5">// Stack</div>
+        <div className="font-mono text-xs text-black/40 mb-5">// Skills</div>
         <h2 className="font-display font-black text-3xl md:text-4xl lg:text-[48px] leading-[1.05] tracking-tight text-black mb-12 lg:mb-16">
           The recruiting stack.
         </h2>

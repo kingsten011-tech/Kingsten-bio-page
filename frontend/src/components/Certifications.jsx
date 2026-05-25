@@ -18,7 +18,7 @@ const education = [
 const certifications = [
   { title: 'Effective Sourcing Strategies', provider: 'SocialTalent', id: '125822' },
   { title: 'Strategic Sourcing Models', provider: 'SocialTalent', id: '119079' },
-  { title: 'Expert Sourcing', provider: 'SocialTalent', id: '—' },
+  { title: 'Expert Sourcing', provider: 'SocialTalent', id: '245332' },
 ];
 
 const Certifications = () => {
@@ -84,7 +84,7 @@ const Certifications = () => {
                     <div className="font-mono text-[11px] text-black/50 mt-1">{cert.provider}</div>
                   </div>
                   <div className="inline-flex items-center px-2.5 py-1.5 rounded-md bg-[#F8D2E2]/40 border border-[#F8D2E2] font-mono text-[10px] text-[#9b2c5e]">
-                    id: {cert.id}
+                    ID: {cert.id}
                   </div>
                 </div>
               ))}

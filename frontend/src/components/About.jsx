@@ -72,7 +72,7 @@ const About = () => {
             </div>
 
             <div>
-              <div className="font-mono text-[11px] text-black/40 mb-3">// strengths</div>
+              <div className="font-mono text-[11px] text-black/40 mb-3">// Strengths</div>
               <div className="flex flex-wrap gap-2">
                 <StrengthPill>Executive Sourcing</StrengthPill>
                 <StrengthPill>Engineering Leadership Hiring</StrengthPill>

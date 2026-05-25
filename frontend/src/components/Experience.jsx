@@ -207,7 +207,7 @@ const Experience = () => {
             <span className="text-black/30">built teams.</span>
           </h2>
           <p className="font-mono text-[11px] text-black/40 max-w-xs">
-            click any role to expand the impact.
+            Click any role to expand the impact.
           </p>
         </div>
 

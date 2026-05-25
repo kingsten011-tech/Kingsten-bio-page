@@ -134,7 +134,7 @@ const Projects = () => {
             Built, not just billed.
           </h2>
           <p className="font-mono text-[11px] text-black/40 max-w-sm leading-relaxed">
-            initiatives that went beyond filling roles — founding teams, internal tooling, and process design.
+            Initiatives that went beyond filling roles — founding teams, internal tooling, and process design.
           </p>
         </div>
 

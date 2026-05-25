@@ -30,7 +30,7 @@ const Footer = () => {
               className="inline-flex items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 px-4 py-2.5 rounded-full font-mono text-xs text-white/80 transition-colors"
             >
               <Mail size={13} />
-              email
+              Email
             </a>
             <a
               href="https://in.linkedin.com/in/kingsten-jones-646242125"
@@ -40,14 +40,14 @@ const Footer = () => {
               className="inline-flex items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 px-4 py-2.5 rounded-full font-mono text-xs text-white/80 transition-colors group"
             >
               <Linkedin size={13} />
-              linkedin
+              LinkedIn
               <ArrowUpRight size={12} className="group-hover:rotate-12 transition-transform" />
             </a>
           </div>
         </div>
 
         <div className="mt-8 pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4">
-          <p className="font-mono text-[11px] text-white/30">// Crafted with care · {year}</p>
+          <p className="font-mono text-[11px] text-white/30">// Crafted With Care · {year}</p>
           <p className="font-mono text-[11px] text-white/30">© Kingsten Jones</p>
         </div>
       </div>

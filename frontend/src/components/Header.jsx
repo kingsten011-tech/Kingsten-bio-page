@@ -12,7 +12,13 @@ const Header = ({ scrolled }) => {
     }
   };
 
-  const navItems = ['about', 'experience', 'projects', 'skills', 'contact'];
+  const navItems = [
+    { id: 'about', label: 'About' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'contact', label: 'Contact' },
+  ];
 
   return (
     <header
@@ -45,15 +51,15 @@ const Header = ({ scrolled }) => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
+          {navItems.map(({ id, label }) => (
             <button
-              key={item}
-              onClick={() => scrollToSection(item)}
-              data-testid={`nav-${item}`}
+              key={id}
+              onClick={() => scrollToSection(id)}
+              data-testid={`nav-${id}`}
               className="font-mono text-[13px] text-black/60 hover:text-black transition-colors"
             >
               <span className="text-black/30">/ </span>
-              {item}
+              {label}
             </button>
           ))}
         </div>
@@ -80,14 +86,14 @@ const Header = ({ scrolled }) => {
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#F1EDE3] border-t border-black/5 px-6 py-4">
           <div className="flex flex-col gap-4">
-            {navItems.map((item) => (
+            {navItems.map(({ id, label }) => (
               <button
-                key={item}
-                onClick={() => scrollToSection(item)}
+                key={id}
+                onClick={() => scrollToSection(id)}
                 className="font-mono text-sm text-left text-black/70 hover:text-black"
               >
                 <span className="text-black/30">/ </span>
-                {item}
+                {label}
               </button>
             ))}
           </div>
