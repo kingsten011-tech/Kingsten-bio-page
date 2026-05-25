@@ -8,6 +8,10 @@ import Certifications from '../components/Certifications';
 import Contact from '../components/Contact';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ScrollReveal from '../components/motion/ScrollReveal';
+import AmbientInteraction from '../components/motion/AmbientInteraction';
+import AuroraBackground from '../components/motion/AuroraBackground';
+import SparkProvider from '../components/motion/SparkProvider';
 
 const LandingPage = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -22,17 +26,34 @@ const LandingPage = () => {
 
   return (
     <div className="landing-page">
+      <AuroraBackground />
+      <AmbientInteraction />
+      <SparkProvider />
       <Header scrolled={scrolled} />
-      <main>
+      <main className="relative z-[1]">
         <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Certifications />
-        <Contact />
+        <ScrollReveal>
+          <About />
+        </ScrollReveal>
+        <ScrollReveal delay={40}>
+          <Experience />
+        </ScrollReveal>
+        <ScrollReveal delay={40}>
+          <Projects />
+        </ScrollReveal>
+        <ScrollReveal delay={40}>
+          <Skills />
+        </ScrollReveal>
+        <ScrollReveal delay={40}>
+          <Certifications />
+        </ScrollReveal>
+        <ScrollReveal delay={40}>
+          <Contact />
+        </ScrollReveal>
       </main>
-      <Footer />
+      <ScrollReveal>
+        <Footer />
+      </ScrollReveal>
     </div>
   );
 };

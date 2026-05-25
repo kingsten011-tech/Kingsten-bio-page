@@ -62,7 +62,7 @@ const Skills = () => {
             <div
               key={id}
               data-testid={`stack-column-${id}`}
-              className="bg-white rounded-3xl p-6 lg:p-7 border border-black/5"
+              className="premium-card ambient-surface spark-interactive bg-white rounded-3xl p-6 lg:p-7 border border-black/5"
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-[#0E0E0C] flex items-center justify-center">

@@ -2,7 +2,7 @@ import React from 'react';
 import { Sparkles, MapPin } from 'lucide-react';
 
 const Achievement = ({ children }) => (
-  <div className="bg-white border border-black/5 rounded-2xl p-4 flex items-start gap-3">
+  <div className="premium-card ambient-surface spark-interactive bg-white border border-black/5 rounded-2xl p-4 flex items-start gap-3">
     <div className="w-6 h-6 rounded-md bg-[#E8F5C0] flex items-center justify-center flex-shrink-0 mt-0.5">
       <Sparkles size={12} className="text-[#7DAF15]" />
     </div>
@@ -11,7 +11,7 @@ const Achievement = ({ children }) => (
 );
 
 const StrengthPill = ({ children }) => (
-  <span className="inline-flex items-center px-3.5 py-1.5 rounded-full border border-black/10 bg-white/60 font-mono text-[11px] text-black/70 hover:border-black/30 transition-colors">
+  <span className="premium-link ambient-surface spark-interactive inline-flex items-center px-3.5 py-1.5 rounded-full border border-black/10 bg-white/60 font-mono text-[11px] text-black/70 hover:border-black/30">
     {children}
   </span>
 );
@@ -33,7 +33,7 @@ const About = () => {
           {/* Profile photo card — smaller */}
           <div className="relative max-w-sm">
             <div className="absolute -inset-2.5 bg-[#CFEA6B]/40 rounded-3xl blur-sm" />
-            <div className="relative bg-white rounded-3xl overflow-hidden shadow-xl shadow-black/5">
+            <div className="premium-card ambient-surface spark-interactive relative bg-white rounded-3xl overflow-hidden shadow-xl shadow-black/5">
               <img
                 src="/images/profile.jpg"
                 alt="Kingsten Jones"

@@ -41,7 +41,7 @@ const Certifications = () => {
                 <div
                   key={i}
                   data-testid={`education-${i}`}
-                  className="bg-white border border-black/5 rounded-2xl p-5 flex items-start gap-3.5"
+                  className="premium-card ambient-surface spark-interactive bg-white border border-black/5 rounded-2xl p-5 flex items-start gap-3.5"
                 >
                   <div className="w-10 h-10 rounded-xl bg-[#0E0E0C] flex items-center justify-center flex-shrink-0">
                     <GraduationCap size={18} className="text-[#CFEA6B]" />
@@ -72,7 +72,7 @@ const Certifications = () => {
                 <div
                   key={i}
                   data-testid={`certification-${i}`}
-                  className="bg-white border border-black/5 rounded-2xl p-5 flex items-center gap-3.5"
+                  className="premium-card ambient-surface spark-interactive bg-white border border-black/5 rounded-2xl p-5 flex items-center gap-3.5"
                 >
                   <div className="w-10 h-10 rounded-xl bg-[#E8F5C0] flex items-center justify-center flex-shrink-0">
                     <Award size={18} className="text-[#7DAF15]" />

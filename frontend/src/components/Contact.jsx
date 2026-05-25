@@ -49,7 +49,7 @@ const ContactLink = ({ icon: Icon, label, href, testId }) => (
     target={href.startsWith('http') ? '_blank' : undefined}
     rel="noopener noreferrer"
     data-testid={testId}
-    className="flex items-center gap-3 bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 rounded-2xl px-5 py-4 transition-all group"
+    className="premium-link premium-card-dark ambient-surface-dark spark-interactive flex items-center gap-3 bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 rounded-2xl px-5 py-4 group"
   >
     <Icon size={18} className="text-[#CFEA6B] flex-shrink-0" />
     <span className="font-mono text-sm text-white/85 flex-1">{label}</span>
@@ -132,7 +132,7 @@ const Contact = () => {
           </div>
 
           {/* Right: Contact form */}
-          <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-7 lg:p-9 relative overflow-hidden">
+          <div className="premium-card-dark ambient-surface-dark spark-interactive bg-white/[0.02] border border-white/10 rounded-3xl p-7 lg:p-9 relative overflow-hidden">
             <div
               className="absolute inset-0 opacity-[0.06] pointer-events-none"
               style={{
@@ -228,7 +228,7 @@ const Contact = () => {
                           type="button"
                           onClick={() => setForm((prev) => ({ ...prev, roleType: role }))}
                           data-testid={`contact-role-${role.toLowerCase()}`}
-                          className={`px-4 py-2 rounded-full font-mono text-xs border transition-all ${
+                          className={`premium-btn ambient-surface spark-interactive px-4 py-2 rounded-full font-mono text-xs border ${
                             form.roleType === role
                               ? 'bg-[#CFEA6B] text-black border-[#CFEA6B]'
                               : 'bg-transparent text-white/70 border-white/15 hover:border-white/30'
@@ -341,7 +341,7 @@ const Contact = () => {
                       <button
                         type="submit"
                         data-testid="contact-submit"
-                        className="w-full inline-flex items-center justify-center bg-white hover:bg-white/90 text-black px-5 py-3.5 rounded-full font-mono text-sm font-medium transition-all"
+                        className="premium-btn ambient-surface spark-interactive w-full inline-flex items-center justify-center bg-white hover:bg-white/90 text-black px-5 py-3.5 rounded-full font-mono text-sm font-medium"
                       >
                         Submit
                       </button>
@@ -354,7 +354,7 @@ const Contact = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       data-testid="contact-schedule"
-                      className="w-full inline-flex items-center justify-center gap-2.5 bg-[#CFEA6B] hover:bg-[#bcd957] text-black px-5 py-3.5 rounded-full font-mono text-sm font-medium transition-all group"
+                      className="premium-btn ambient-surface spark-interactive premium-btn-lime w-full inline-flex items-center justify-center gap-2.5 bg-[#CFEA6B] hover:bg-[#bcd957] text-black px-5 py-3.5 rounded-full font-mono text-sm font-medium group"
                     >
                       <Calendar size={15} className="group-hover:scale-105 transition-transform" />
                       Schedule a Conversation

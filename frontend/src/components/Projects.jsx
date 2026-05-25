@@ -4,7 +4,7 @@ import CompanyLogo from './CompanyLogo';
 const FeatureProject = () => (
   <div
     data-testid="featured-project"
-    className="bg-[#0E0E0C] text-white rounded-2xl p-7 lg:p-10 mb-5 relative overflow-hidden"
+    className="premium-card-dark ambient-surface-dark spark-interactive bg-[#0E0E0C] text-white rounded-2xl p-7 lg:p-10 mb-5 relative overflow-hidden"
   >
     <div className="max-w-3xl">
       <div className="flex items-center gap-3 mb-5 flex-wrap">
@@ -43,7 +43,7 @@ const FeatureProject = () => (
 const ProjectCard = ({ project }) => (
   <div
     data-testid={`project-${project.id}`}
-    className="bg-white rounded-2xl p-5 lg:p-7 border border-black/5 hover:border-black/15 transition-all h-full flex flex-col"
+    className="premium-card ambient-surface spark-interactive bg-white rounded-2xl p-5 lg:p-7 border border-black/5 hover:border-black/15 h-full flex flex-col"
   >
     <div className="flex items-center gap-3 mb-4">
       <span className={`inline-flex items-center px-2.5 py-1 rounded-full font-mono text-[10px] font-bold tracking-wider ${project.statusColor}`}>

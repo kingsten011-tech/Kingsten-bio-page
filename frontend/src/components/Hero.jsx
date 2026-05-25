@@ -1,8 +1,9 @@
 import React from 'react';
 import { ArrowDown, MapPin, Calendar } from 'lucide-react';
+import HeroGlassLight from './motion/HeroGlassLight';
 
 const TerminalWindow = () => (
-  <div data-testid="hero-terminal" className="bg-[#0E0E0C] rounded-xl overflow-hidden shadow-2xl shadow-black/20 w-full max-w-md mx-auto">
+  <div data-testid="hero-terminal" className="premium-card-dark ambient-surface-dark spark-interactive bg-[#0E0E0C] rounded-xl overflow-hidden shadow-2xl shadow-black/20 w-full max-w-md mx-auto">
     <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5">
       <div className="flex gap-1.5">
         <div className="w-3 h-3 rounded-full bg-[#FF5F57]"></div>
@@ -45,7 +46,7 @@ const TerminalWindow = () => (
 );
 
 const StatBox = ({ value, label }) => (
-  <div className="bg-white/60 border border-black/5 rounded-xl px-4 py-3.5 backdrop-blur-sm">
+  <div className="premium-card ambient-surface spark-interactive bg-white/60 border border-black/5 rounded-xl px-4 py-3.5 backdrop-blur-sm">
     <div className="font-display text-xl md:text-2xl font-black text-black leading-none mb-1.5">{value}</div>
     <div className="font-mono text-[9px] tracking-widest text-black/50 uppercase">{label}</div>
   </div>
@@ -143,17 +144,18 @@ const Hero = () => {
       data-testid="hero-section"
       className="relative bg-[#F1EDE3] pt-28 pb-20 lg:pt-32 lg:pb-24 overflow-hidden"
     >
+      <HeroGlassLight />
       <div
-        className="absolute inset-0 opacity-[0.15] pointer-events-none"
+        className="absolute inset-0 z-[2] opacity-[0.15] pointer-events-none"
         style={{
           backgroundImage: `radial-gradient(circle, #00000040 1px, transparent 1px)`,
           backgroundSize: '24px 24px',
         }}
       />
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
         {/* Status pill */}
-        <div className="inline-flex items-center gap-2 bg-white/70 border border-black/5 rounded-full px-3.5 py-1.5 mb-10 backdrop-blur-sm">
+        <div className="hero-reveal inline-flex items-center gap-2 bg-white/70 border border-black/5 rounded-full px-3.5 py-1.5 mb-10 backdrop-blur-sm">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#7DAF15] opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#7DAF15]"></span>
@@ -162,7 +164,7 @@ const Hero = () => {
         </div>
 
         <div className="grid lg:grid-cols-[1.3fr_1fr] gap-12 lg:gap-16 items-start">
-          <div>
+          <div className="hero-reveal hero-reveal-delay-1">
             <div className="font-mono text-xs text-black/40 mb-5">// Hello, World</div>
 
             <h1 className="font-display font-black text-[#0a0a0a] leading-[0.95] tracking-tight mb-7">
@@ -188,7 +190,7 @@ const Hero = () => {
               <button
                 onClick={() => scrollTo('experience')}
                 data-testid="see-journey-btn"
-                className="inline-flex items-center gap-2.5 bg-black text-white pl-5 pr-4 py-3 rounded-full font-mono text-[13px] hover:bg-black/85 transition-all group"
+                className="premium-btn ambient-surface-dark spark-interactive premium-btn-dark inline-flex items-center gap-2.5 bg-black text-white pl-5 pr-4 py-3 rounded-full font-mono text-[13px] hover:bg-black/85 group"
               >
                 See the Journey
                 <ArrowDown size={13} className="group-hover:translate-y-0.5 transition-transform" />
@@ -196,7 +198,7 @@ const Hero = () => {
               <a
                 href="#contact"
                 data-testid="schedule-call-btn"
-                className="inline-flex items-center gap-2 bg-[#CFEA6B] hover:bg-[#bcd957] text-black pl-5 pr-4 py-3 rounded-full font-mono text-[13px] transition-all group"
+                className="premium-btn ambient-surface spark-interactive premium-btn-lime inline-flex items-center gap-2 bg-[#CFEA6B] hover:bg-[#bcd957] text-black pl-5 pr-4 py-3 rounded-full font-mono text-[13px] group"
               >
                 <Calendar size={13} />
                 Schedule a Call
@@ -208,7 +210,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="space-y-5">
+          <div className="hero-reveal hero-reveal-delay-2 space-y-5">
             <TerminalWindow />
             <div className="grid grid-cols-3 gap-2.5">
               <StatBox value="8+" label="Years" />
@@ -218,7 +220,9 @@ const Hero = () => {
           </div>
         </div>
 
-        <CompanyLogos />
+        <div className="hero-reveal hero-reveal-delay-3">
+          <CompanyLogos />
+        </div>
       </div>
     </section>
   );

@@ -27,7 +27,7 @@ const Footer = () => {
             <a
               href="mailto:kingstenjones2@gmail.com"
               data-testid="footer-email"
-              className="inline-flex items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 px-4 py-2.5 rounded-full font-mono text-xs text-white/80 transition-colors"
+              className="premium-link premium-card-dark ambient-surface-dark spark-interactive inline-flex items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 px-4 py-2.5 rounded-full font-mono text-xs text-white/80"
             >
               <Mail size={13} />
               Email
@@ -37,7 +37,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               data-testid="footer-linkedin"
-              className="inline-flex items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 px-4 py-2.5 rounded-full font-mono text-xs text-white/80 transition-colors group"
+              className="premium-link premium-card-dark ambient-surface-dark spark-interactive inline-flex items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 px-4 py-2.5 rounded-full font-mono text-xs text-white/80 group"
             >
               <Linkedin size={13} />
               LinkedIn

@@ -23,7 +23,7 @@ const Header = ({ scrolled }) => {
   return (
     <header
       data-testid="site-header"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
         scrolled
           ? 'bg-[#F1EDE3]/90 backdrop-blur-md border-b border-black/5'
           : 'bg-transparent'
@@ -56,7 +56,7 @@ const Header = ({ scrolled }) => {
               key={id}
               onClick={() => scrollToSection(id)}
               data-testid={`nav-${id}`}
-              className="font-mono text-[13px] text-black/60 hover:text-black transition-colors"
+              className="premium-nav-link font-mono text-[13px] text-black/60 hover:text-black"
             >
               <span className="text-black/30">/ </span>
               {label}
@@ -67,7 +67,7 @@ const Header = ({ scrolled }) => {
         <button
           onClick={() => scrollToSection('contact')}
           data-testid="get-in-touch-btn"
-          className="hidden md:inline-flex items-center gap-2 bg-black text-white pl-5 pr-4 py-2.5 rounded-full font-mono text-[13px] hover:bg-black/80 transition-all hover:gap-3"
+          className="premium-btn ambient-surface-dark spark-interactive premium-btn-dark hidden md:inline-flex items-center gap-2 bg-black text-white pl-5 pr-4 py-2.5 rounded-full font-mono text-[13px] hover:bg-black/80 hover:gap-3"
         >
           Get In Touch
           <ArrowUpRight size={14} />
@@ -90,7 +90,7 @@ const Header = ({ scrolled }) => {
               <button
                 key={id}
                 onClick={() => scrollToSection(id)}
-                className="font-mono text-sm text-left text-black/70 hover:text-black"
+                className="premium-nav-link font-mono text-sm text-left text-black/70 hover:text-black"
               >
                 <span className="text-black/30">/ </span>
                 {label}
